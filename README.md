@@ -5,19 +5,19 @@ Local IDE for Typst
 ## Usage
 
 ### Option 1 (for debug purpose)
-Open a terminal
-Go to the electron-app/out folder
-launch ./TypStyle on the command line
+Open a terminal\
+Go to the electron-app/out folder\
+launch ./TypStyle on the command line\
 
 ### Option 2
 
-Go to the electron-app/ folder
-write npm make on the command line
-Navigate to the out/make/deb/x64/ folder
-Depackage the .deb file with your packets tool manager:
-sudo dpkg -i TypStyle-1.0.0_amd64.deb
+Go to the electron-app/ folder\
+write npm make on the command line\
+Navigate to the out/make/deb/x64/ folder\
+Depackage the .deb file with your packets tool manager:\
+sudo dpkg -i TypStyle-1.0.0_amd64.deb\
 
-Search for TypStyle and use it !
+Search for TypStyle and use it !\
 
 ## Support
 If you're having any trouble concerning the projet please contact any of the following emails for help.
