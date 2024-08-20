@@ -4,7 +4,7 @@ Local IDE for Typst
 
 ## Usage
 
-### Option 1 (for debug purpose)
+### Option 1
 Open a terminal\
 Go to the electron-app/out folder\
 launch ./TypStyle on the command line\
