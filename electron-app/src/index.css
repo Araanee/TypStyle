@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333333;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-content {
+  display: grid;
+  flex-direction: column;
+  width: 80%;
+}
+
+.searchbar {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.searchbar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: space-evenly; /* Evenly spread content vertically */
+  flex: 1;
+  text-align: center; /* Center text alignment */
+  padding: 20px 0;
+}
+
+h1 {
+  margin-top: 10px;
+}
+
+.buttons {
+  margin-top: 20px;
+  /*margin-bottom: -400px;*/
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#projectsList {
+  margin-top: 20px;
+}
+
+.projectListsClass {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007acc;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #005f99;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 40%; /* Could be more or less, depending on screen size */
+  border-radius: 10px; /* Match the style of buttons */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
+  text-align: center; /* Center text alignment */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer; 
+  margin: -10px 0 0 0;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 24px; /* Font size to match headers */
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007acc;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-content button:hover {
+  background-color: #005f99;
+}
+
+.project-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.project-item:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.project-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+
+@media (min-width: 600px) {
+  .main-content {
+    width: 60%;
+  }
+
+  .projectListsClass {
+    margin: 15px 0;
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    width: 40%;
+  }
+
+  .projectListsClass {
+    margin: 20px 0;
+    padding: 20px;
+  }
+}

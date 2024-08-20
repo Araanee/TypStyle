@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Split Screen Example</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/lint/lint.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/lint/lint.min.css">
+  <script defer src="renderer.js"></script>
+</head>
+<body>
+  <div class="project-name-bar">
+    <span id="project-name">Project Name</span>
+  </div>
+  <div class="top-bar">
+    <button class="button1" onclick="home_button_clicked()"></button>
+    <button class="top-button buttonAa" onclick="font_size_button_clicked()"></button>
+    <button class="top-button buttonB" onclick="bold_button_clicked()"></button>
+    <button class="top-button buttonI" onclick="italic_button_clicked()"></button>
+    <button class="top-button buttonU" onclick="underline_button_clicked()"></button>
+    <button class="top-button buttonM" onclick="math_button_clicked()"></button>
+    <button class="top-button buttonLink" onclick="insert_link_button_clicked()"></button>
+    <button class="top-button buttonCompile" onclick="compile_button_clicked()"></button>
+  </div>
+  <div id="font-dropdown" class="font-dropdown">
+    <select id="font-select" onchange="changeFont()">
+      <option value="Arial" style="font-family: Arial;">Arial</option>
+      <option value="Atkinson Hyperlegible" style="font-family: 'Atkinson Hyperlegible';">Atkinson Hyperlegible</option>
+      <option value="Atma" style="font-family: Atma;">Atma</option>
+      <option value="Barlow" style="font-family: Barlow;">Barlow</option>
+      <option value="Buenard" style="font-family: Buenard;">Buenard</option>
+      <option value="Cantarell" style="font-family: Cantarell;">Cantarell</option>
+      <option value="Cascadia Code" style="font-family: 'Cascadia Code';">Cascadia Code</option>
+      <option value="Cascadia Mono" style="font-family: 'Cascadia Mono';">Cascadia Mono</option>
+      <option value="Crimson Pro" style="font-family: 'Crimson Pro';">Crimson Pro</option>
+      <option value="Comic Neue" style="font-family: 'Comic Neue';">Comic Neue</option>
+      <option value="Comic Neue Angular" style="font-family: 'Comic Neue Angular';">Comic Neue Angular</option>
+      <option value="DejaVu Sans" style="font-family: 'DejaVu Sans';">DejaVu Sans</option>
+      <option value="DejaVu Sans Mono" style="font-family: 'DejaVu Sans Mono';">DejaVu Sans Mono</option>
+      <option value="DejaVu Serif" style="font-family: 'DejaVu Serif';">DejaVu Serif</option>
+      <option value="DM Mono" style="font-family: 'DM Mono';">DM Mono</option>
+      <option value="DM Sans" style="font-family: 'DM Sans';">DM Sans</option>
+      <option value="DM Serif Display" style="font-family: 'DM Serif Display';">DM Serif Display</option>
+      <option value="DM Serif Text" style="font-family: 'DM Serif Text';">DM Serif Text</option>
+      <option value="Fira Code" style="font-family: 'Fira Code';">Fira Code</option>
+      <option value="Fira Math" style="font-family: 'Fira Math';">Fira Math</option>
+      <option value="Fira Mono" style="font-family: 'Fira Mono';">Fira Mono</option>
+      <option value="Fira Sans" style="font-family: 'Fira Sans';">Fira Sans</option>
+      <option value="Harano Aji Gothic" style="font-family: 'Harano Aji Gothic';">Harano Aji Gothic</option>
+      <option value="Harano Aji Mincho" style="font-family: 'Harano Aji Mincho';">Harano Aji Mincho</option>
+      <option value="HK Grotesk" style="font-family: 'HK Grotesk';">HK Grotesk</option>
+      <option value="IBM Plex Mono" style="font-family: 'IBM Plex Mono';">IBM Plex Mono</option>
+      <option value="IBM Plex Sans" style="font-family: 'IBM Plex Sans';">IBM Plex Sans</option>
+    </select>
+  </div>
+  <div class="container">
+    <div class="column button-column">
+      <button class="button2" onclick="view_files_button_clicked()"></button>
+      <button class="bttn_shortcut" onclick="view_shortcut_button_clicked()"></button>
+      <button class="bttn_setting" onclick="view_setting_button_clicked()"></button>
+    </div>
+    <div id="file-navigation-panel" class="file-navigation-panel">
+      <h2 class="explorer-header">Explorer
+        <span class="button-container">
+          <button id="add-button" class="icon-button">+</button>
+          <button id="delete-button" class="icon-button">-</button>
+        </span>
+      </h2>
+    </div>
+    <div id="settings-panel" class="settings-panel">
+      <h2>Settings</h2>
+      <label for="project-name-input">Project Name</label>
+      <input type="text" id="project-name-input" placeholder="Enter project name">
+      <label for="owner-input">Owner</label>
+      <input type="text" id="owner-input" placeholder="Enter owner name">
+      <div class="settings-buttons">
+        <button id="delete-project" class="delete-button">Delete project</button>
+        <button id="save-settings" class="save-button">Save</button>
+      </div>
+    </div>
+    <div class="column text-column">
+      <div id="open-files" class="open-files">
+        <div id="open-files-list"></div>
+      </div>
+      <div class="code-container">
+        <textarea id="text-editor" placeholder="Write your code here..."></textarea>
+      </div>
+      <div id="error-container" style="color: red;"></div> <!-- Section pour afficher les erreurs -->
+    </div>
+    <div class="column compiled-text-column">
+      <iframe id="pdf-viewer"></iframe>
+    </div>
+  </div>
+
+  <!-- Modal for Shortcuts -->
+  <div id="shortcut-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Keyboard Shortcuts</h2>
+      <ul>
+        <li><strong>Ctrl + Z</strong>: Undo</li>
+        <li><strong>Ctrl + Y</strong>: Redo</li>
+        <li><strong>Ctrl + S</strong>: Save</li>
+        <li><strong>Ctrl + F</strong>: Find</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal for Create/Delete File/Folder -->
+  <div id="file-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>File/Folder Operations</h2>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="file-folder-type">Type : </label>
+          <select id="file-folder-type">
+            <option value="file">File</option>
+            <option value="folder">Folder</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="file-folder-path">Path : </label>
+          <input type="text" id="file-folder-path" placeholder="Enter path">
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button id="create-button" class="modal-button">Create</button>
+        <button id="delete-button-modal" class="modal-button">Delete</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
